@@ -41,7 +41,7 @@ int hopcroftKarp(vector<vector<int>> &g, vector<int>& btoa){
 			}
 			if(islast)break;
 			if(next.empty())return res;
-			ffor(int a: next) A[a]=lay;
+			for(int a: next) A[a]=lay;
 			cur.swap(next);
 		}
 		rep(a, g.size())
@@ -52,10 +52,44 @@ int hopcroftKarp(vector<vector<int>> &g, vector<int>& btoa){
 int main(){
 	int n;cin>>n;
 	vector<vector<int>> arr(n, vector<int>(n));
+	vector<vector<int>> arr0(n, vector<int>(n,-1));
+	int zeros = 0;
 	rep(i,n){
 		rep(j,n){
 			cin>>arr[i][j];
+			if (arr[i][j]==0){
+				arr0[i][j] = zeros;
+				zeros++;
+			}
 		}
 	}
+
+	vector<int> btoa(zeros, -1);
+	vector<vector<int>> g;
+
+	int stonesGT1 = 0;
+	rep(i,n){
+		rep(j,n){
+			if (arr[i][j]>1){
+				rep(stone, arr[i][j]-1){
+					g.push_back({});
+					rep(k,n){
+						if (k!=i && arr0[k][j]!=-1){
+							g.back().push_back(arr0[k][j]);
+						}
+						if (k!=j && arr0[i][k]!=-1){
+							g.back().push_back(arr0[i][k]);
+							
+						}
+					}
+				}
+				stonesGT1 += arr[i][j]-1;
+			}
+		}
+	}
+
+	int ones = hopcroftKarp(g, btoa);
+
+	cout<<ones+2*(stonesGT1-ones)<<'\n';
 
 }
