@@ -35,32 +35,14 @@ void solve() {
     cin >> input;
     N = input.size();
 
-    un ret = INF;
+    A = input;
+    B = input;
+    reverse(ALL(B));
 
-    // even
-    for(un i = 0; i <= N; i++) {
-        A = input.substr(0, i);
-        B = input.substr(i, N-i);
-        reverse(ALL(B));
+    P = N;
+    Q = N;
 
-        P = A.size();
-        Q = B.size();
-
-        ret = min(ret, dijkstra());
-    }
-
-
-    // odd
-    for(un i = 0; i < N; i++){
-        A = input.substr(0, i);
-        B = input.substr(i+1, N-i-1);
-        reverse(ALL(B));
-
-        P = A.size();
-        Q = B.size();
-
-        ret = min(ret, dijkstra());
-    } 
+    un ret = dijkstra() / 2;
 
     cout << ret << endl;
 
