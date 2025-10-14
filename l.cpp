@@ -45,9 +45,29 @@ void solve() {
 
     if (abs(s) == 4) {
         cout << "OK" << endl;
+        return;
     }
-    else{
-        cout << "STOP" << endl;
+
+    if ((0 < x_l) and (x_line < x_l)) {
+        cout << "OK" << endl;
+        return;
     }
+
+    if ((0 < y_l) and (y_line < y_l)) {
+        cout << "OK" << endl;
+        return;
+    }
+
+    if ((0 > x_r) and (x_line > x_r)) {
+        cout << "OK" << endl;
+        return;
+    }
+
+    if ((0 > y_r) and (y_line > y_r)) {
+        cout << "OK" << endl;
+        return;
+    }
+    
+    cout << "STOP" << endl;
 
 }
