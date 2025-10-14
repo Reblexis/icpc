@@ -51,40 +51,28 @@ void solve() {
 
 un dijkstra() {
 
-    priority_queue<tuple<un, un, un>, vector<tuple<un, un, un>>, greater<tuple<un, un, un>>> kjuu;
+    vec<vuc> ceny = vec(P+1, vuc(Q+1, INF));
 
+    ceny[P][Q] = 0;
 
-    kjuu.push({0, P, Q});
+    for (un s = P+Q-1; s >= 0; s--){
+        for (un p = 0; p <= s; p++) {
+            un q = s-p;
 
-    map<pair<un, un>, un> ceny;
+            if (p > P) continue;
+            if (q > Q) continue;
 
+            if (p < P) ceny[p][q] = min(ceny[p][q], ceny[p+1][q]+1);
+            if (q < Q) ceny[p][q] = min(ceny[p][q], ceny[p][q+1]+1);
 
-    while (not kjuu.empty())
-    {
-        auto [w, p, q] = kjuu.top(); kjuu.pop();
-
-        if (ceny.find({p, q}) != ceny.end()) continue;
-
-        ceny[{p, q}] = w;
-
-        if ((p == 0) and (q==0)) continue;
-
-        if (p == 0) kjuu.push({w+q, 0, 0});
-        else if (q == 0) kjuu.push({w+p, 0, 0});
-        else {
-
-            if (A[p-1] == B[q-1]) {
-                kjuu.push({w, p-1, q-1});
-            }
-            else {
-                kjuu.push({w+1, p-1, q-1});
-                kjuu.push({w+1, p-1, q});
-                kjuu.push({w+1, p, q-1});
+            if ((p < P) and (q < Q)) {
+                if (A[p] == B[q]) ceny[p][q] = min(ceny[p][q], ceny[p+1][q+1]);
+                else ceny[p][q] = min(ceny[p][q], ceny[p+1][q+1]+1);
             }
         }
     }
-    
-    return ceny[{0, 0}];
+
+    return ceny[0][0];
 }
 
 
