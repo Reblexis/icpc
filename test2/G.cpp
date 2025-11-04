@@ -84,7 +84,7 @@ int main(){
     }
     dfs(maxID, graph);
     bool pos = true;
-    rep(i,0,n){
+    rep(i,0,sz(graph)){
         pos&=vis[i];
     }
     if(pos){
