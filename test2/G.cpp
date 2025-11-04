@@ -71,7 +71,7 @@ int main(){
     
     scc(graph, [&](vi& v){});
     
-    vis.assign(n, false);
+    vis.assign(sz(graph), false);
     int maxm = 0;
     int maxID = 0;
     rep(i,0,n){
@@ -93,4 +93,3 @@ int main(){
     else
         cout<<"impossible"<<'\n';
 }
-            graph.push_back({});
