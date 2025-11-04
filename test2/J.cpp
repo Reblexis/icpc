@@ -19,7 +19,7 @@ int main(){
     bool poss = true;
     vector<string> answer;
     rep(i,0, n){
-        string bestString = "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
+        string bestString = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
         int p;cin>>p;
         bool pos = false;
         rep(i,0, p){
