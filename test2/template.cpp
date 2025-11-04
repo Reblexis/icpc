@@ -12,16 +12,5 @@ typedef vector<int> vi;
 int main(){
     cin.tie(0)->sync_with_stdio(0);
     cin.exceptions(cin.failbit);
-    int c, n;cin>>c>>n;
-    
-    if(c>n){
-        cout<<0;
-    }
-    else if(c==n){
-        cout<<n;
-    }
-    else{
-        cout<<c+1;
-    }
-    cout<<'\n';
+
 }
