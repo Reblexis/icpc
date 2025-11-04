@@ -51,7 +51,7 @@ int main(){
     int n;cin>>n;
     int lastID = 0;
     map<string, int> ids;
-    vector<vector<int>> graph(n);
+    vector<vector<int>> graph;
     
     rep(i,0,n){
         string A; cin>>A;
@@ -59,9 +59,11 @@ int main(){
         string son;cin>>son; string of;cin>>of;
         string B; cin>>B;
         if(ids.count(A)==0){
+            graph.push_back({});
             ids[A] = lastID++;
         }
         if(ids.count(B)==0){
+            graph.push_back({});
             ids[B] = lastID++;
         }
         graph[ids[B]].push_back(ids[A]);
@@ -91,3 +93,4 @@ int main(){
     else
         cout<<"impossible"<<'\n';
 }
+            graph.push_back({});
